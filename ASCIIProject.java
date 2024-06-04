@@ -9,15 +9,17 @@ public class ASCIIProject{
 
     public static void main(String[] args) throws IOException{
         
-        filename = "/Users/javidanaghayev/Downloads/white.jpg";
+        filename = "/Users/javidanaghayev/Downloads/lincoln.jpg";
         File file = new File(filename);
         BufferedImage image = ImageIO.read(file);
 ;
-        int x = 50; 
-        int y = 50; 
+        int x = 50; //finds the RGB value at x axis
+        int y = 50; //finds the RGB value at y axis
 
         int width = image.getWidth();
         int height = image.getHeight();
+        int[] pixels = img.getRGB(0, 0, width, height, null, 0, width);
+
         System.out.println("Image width: " + width);
         System.out.println("Image height: "+ height);
         System.out.println("Aspect ratio: " + getAspectRatio(width, height));
@@ -46,7 +48,7 @@ public class ASCIIProject{
         BufferedImage image = ImageIO.read(file);
 
         int rgb = image.getRGB(x, y);
-            
+        int a = (rgb >> 24) & 0xFF;    
         int red = (rgb >> 16) & 0xFF;
         int green = (rgb >> 8) & 0xFF;
         int blue = rgb & 0xFF;
