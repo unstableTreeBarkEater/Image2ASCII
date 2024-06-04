@@ -1,17 +1,23 @@
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 
 public class ASCIIProject{
    private static String filename;
    private static String density = "Ñ@#W$9876543210?!abc;:+=-,._ ";
 
    public static void main(String[] args) throws IOException{
-      filename = args[0];       
+     try{
+      filename = args[0];
+     }catch (ArrayIndexOutOfBoundsException e){
+        System.out.println("Please enter a file name!");
+     }catch (NullPointerException e){
+        System.err.println("you moron");
+     }
+
       File file = new File(filename);
       BufferedImage image = ImageIO.read(file);
-
       int width = image.getWidth();
       int height = image.getHeight();
       int[] pixels = image.getRGB(0, 0, width, height, null, 0, width);
