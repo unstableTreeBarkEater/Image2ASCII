@@ -4,67 +4,76 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 
 public class ASCIIProject{
-   private static String filename;
-   private static String density = "Ñ@#W$9876543210?!abc;:+=-,._ ";
+    private static String filename;
+    private static String density = "Ñ@#W$9876543210?!abc;:+=-,._ ";
 
-   public static void main(String[] args) throws IOException{
-      try{
-         filename = args[0];
-      }catch (NullPointerException e){
-         System.exit(0);
-      }catch (ArrayIndexOutOfBoundsException e){
-         System.out.println("Please enter a file name!");
-         System.exit(0);
-      }
+    public static void main(String[] args) throws IOException{
+        try{
+            filename = args[0];
+        }catch (NullPointerException e){
+            System.exit(0);
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Please enter a file name!");
+            System.exit(0);
+        }
 
-      File file = new File(filename);
-      BufferedImage image = ImageIO.read(file);
+        File file = new File(filename);
+        BufferedImage image = ImageIO.read(file);
 
 
-      //ImageCulling image = new ImageCulling(image.getWidth(), image.getHeight());
-      int width = image.getWidth();
-      int height = image.getHeight();
-      int[] pixels = image.getRGB(0, 0, width, height, null, 0, width);
-      System.out.println("Image width: " + width);
-      System.out.println("Image height: "+ height);
-      System.out.println("Aspect ratio: " + getAspectRatio(width, height));
+        int width = image.getWidth();
+        int height = image.getHeight();
+        ImageCulling imageCulling = new ImageCulling(width, height, 15); // Adjust width, height, and chunk size
+        int[] pixels = image.getRGB(0, 0, width, height, null, 0, width);
 
-      for(int i = 0; i < pixels.length; i++){
-         int p = pixels[i];
+        System.out.println("Image width: " + width);
+        System.out.println("Image height: "+ height);
+        System.out.println("Aspect ratio: " + getAspectRatio(width, height));
 
-         int a = ( p >> 24) & 0xFF;
-         int red = (p >> 16) & 0xFF;
-         int green = (p >> 8) & 0xFF;
-         int blue = p & 0xFF;
+        int count = 0;
+        for(int i = 0; i < pixels.length; i++){
+            int p = pixels[i];
 
-         int avg = (red + green + blue) / 3;
-         p = (a << 24) | (avg << 16) | (avg << 8) | avg;
-         pixels[i] = p;
-      }
+            int a = ( p >> 24) & 0xFF;
+            int red = (p >> 16) & 0xFF;
+            int green = (p >> 8) & 0xFF;
+            int blue = p & 0xFF;
 
-      image.setRGB(0, 0, width, height, pixels, 0, width);
+            int avg = (red + green + blue) / 3;
+            p = (a << 24) | (avg << 16) | (avg << 8) | avg;
+            pixels[i] = avg;  //was pixels[i] = p
+            // System.out.println(count+ ": " + avg);
+            // count++;
+        }
 
-      try {
-         file = new File(filename.replace(".jpg", "_grayscale.jpg"));
-         ImageIO.write(image, "jpg", file);
-      } catch (IOException e) {
-         System.out.println(e);
-      }
-   }
 
-   public static String getAspectRatio(int width, int height) {
-      int gcd = gcd(width, height);
-      int aspectWidth = width / gcd;
-      int aspectHeight = height / gcd;
-      return aspectWidth + ":" + aspectHeight;
-   }
+        image.setRGB(0, 0, width, height, pixels, 0, width);
 
-   public static int gcd(int a, int b) {
-      while (b > 0) {
-         int temp = b;
-         b = a % b;
-         a = temp;
-      }
-      return a;
-   }
+        try {
+            file = new File(filename.replace(".jpg", "_grayscale.jpg"));
+            ImageIO.write(image, "jpg", file);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        imageCulling.processImage(pixels);
+        imageCulling.printNewArray();
+        // imageCulling.printArray(pixels);
+
+    }
+
+    public static String getAspectRatio(int width, int height) {
+        int gcd = gcd(width, height);
+        int aspectWidth = width / gcd;
+        int aspectHeight = height / gcd;
+        return aspectWidth + ":" + aspectHeight;
+    }
+
+    public static int gcd(int a, int b) {
+        while (b > 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
 }
