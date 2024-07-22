@@ -5,6 +5,7 @@ public class ImageCulling {
     private int CHUNK_SIZE;
     private int CHUNK;
     private int[][] new_array;
+    private static String density = "Ñ@#W$9876543210?!abc;:+=-,._ "; //28 characters
 
     public ImageCulling(int width, int height, int chunkSize) {
         this.WIDTH = width;
@@ -28,29 +29,49 @@ public class ImageCulling {
                     new_x++;
                 }
                 new_array[new_y][new_x] += arr[WIDTH * y + x];
+                // print(new_array[new_y][new_x]);
+                // printCharArray();
             }
         }
     }
 
+    // public void printCharArray()
     public void printArray(int[] arr) {
         int count = 0;
         System.out.print("This is the original array \n");
         for (int i = 0; i < arr.length; i++) {
-            System.out.printf("%-5s", arr[i]);
-            count++;
+            System.out.println("count: " + count + " array density: " + arr[i]);
+            // count++;
             if (count % WIDTH == 0) System.out.print("\n");
         }
         System.out.print("\n\n\n");
     }
 
     public void printNewArray() {
+        // int count = 0;
         System.out.print("This is the compressed version of the array \n");
         for (int i = 0; i < HEIGHT / CHUNK_SIZE; i++) {
             for (int j = 0; j < WIDTH / CHUNK_SIZE; j++) {
-                System.out.printf("%3s ", new_array[i][j] / CHUNK);
+                // System.out.printf("%3s ", new_array[i][j] / CHUNK);
+                // System.out.println("count: " + count);
+                // count++;
+                System.out.print(denser(new_array[i][j]/CHUNK));
             }
             System.out.print("\n");
         }
+    }
+
+    public static char denser(int avg){
+        int count = 0;
+        for(int bit = 0; bit < 255; bit++){
+            if(bit != 0 && bit % 9 == 0) density.charAt(count++);
+            if(bit == avg) return density.charAt(count);
+        }
+        return ' ';
+    }
+
+    public void print(int value) { //compressed version of the array
+        System.out.println("Value: " + value);
     }
 }
 
