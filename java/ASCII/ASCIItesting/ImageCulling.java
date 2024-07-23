@@ -48,14 +48,14 @@ public class ImageCulling {
         System.out.print("\n\n\n");
     }
 
-    public void printNewArray() throws IOException{
-        PrintWriter writer = new PrintWriter("ograsgot.txt", "UTF-8");
+    public void printNewArray(String filename) throws IOException{
+        PrintWriter writer = new PrintWriter(filename+".txt", "UTF-8");
         BufferedWriter bufferedWriter = new BufferedWriter(writer);
         System.out.print("This is the compressed version of the array \n");
         for (int i = 0; i < HEIGHT / CHUNK_SIZE; i++) {
             for (int j = 0; j < WIDTH / CHUNK_SIZE; j++) {
-                System.out.print(denser(new_array[i][j])); // /CHUNK)); why do we have divided by CHUNK
-                writer.print(denser(new_array[i][j]));
+                System.out.print(denser(new_array[i][j]/CHUNK)); // /CHUNK)); why do we have divided by CHUNK
+                writer.print(denser(new_array[i][j]/CHUNK)); //CHUNK is important
             }
             System.out.print("\n");
             writer.print("\n");
