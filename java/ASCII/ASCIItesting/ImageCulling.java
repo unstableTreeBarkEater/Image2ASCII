@@ -1,11 +1,16 @@
 //salam
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class ImageCulling {
     private int WIDTH;
     private int HEIGHT;
     private int CHUNK_SIZE;
     private int CHUNK;
     private int[][] new_array;
-    private static String density = "Ñ@#W$9876543210?!abc;:+=-,._ "; //28 characters
+    private static String density = "Ñ@#W$9876543210?!abc;:+=-,._ "; // 28 characters
 
     public ImageCulling(int width, int height, int chunkSize) {
         this.WIDTH = width;
@@ -29,36 +34,33 @@ public class ImageCulling {
                     new_x++;
                 }
                 new_array[new_y][new_x] += arr[WIDTH * y + x];
-                // print(new_array[new_y][new_x]);
-                // printCharArray();
             }
         }
     }
 
-    // public void printCharArray()
     public void printArray(int[] arr) {
         int count = 0;
         System.out.print("This is the original array \n");
         for (int i = 0; i < arr.length; i++) {
             System.out.println("count: " + count + " array density: " + arr[i]);
-            // count++;
             if (count % WIDTH == 0) System.out.print("\n");
         }
         System.out.print("\n\n\n");
     }
 
-    public void printNewArray() {
-        // int count = 0;
+    public void printNewArray() throws IOException{
+        PrintWriter writer = new PrintWriter("ograsgot.txt", "UTF-8");
+        BufferedWriter bufferedWriter = new BufferedWriter(writer);
         System.out.print("This is the compressed version of the array \n");
         for (int i = 0; i < HEIGHT / CHUNK_SIZE; i++) {
             for (int j = 0; j < WIDTH / CHUNK_SIZE; j++) {
-                // System.out.printf("%3s ", new_array[i][j] / CHUNK);
-                // System.out.println("count: " + count);
-                // count++;
-                System.out.print(denser(new_array[i][j]/CHUNK));
+                System.out.print(denser(new_array[i][j])); // /CHUNK)); why do we have divided by CHUNK
+                writer.print(denser(new_array[i][j]));
             }
             System.out.print("\n");
+            writer.print("\n");
         }
+        writer.close();
     }
 
     public static char denser(int avg){
@@ -68,10 +70,6 @@ public class ImageCulling {
             if(bit == avg) return density.charAt(count);
         }
         return ' ';
-    }
-
-    public void print(int value) { //compressed version of the array
-        System.out.println("Value: " + value);
     }
 }
 
