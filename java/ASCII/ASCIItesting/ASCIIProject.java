@@ -10,14 +10,13 @@ import java.util.Scanner;
 // (DONE) ASK THE USER TO SPECIFY THEIR DIRECTORY IN WHICH THE FILE WILL BE SAVED, THE PRIORITY
 // (DONE) maybe put a decorative introduction to make the program look a bit welcoming
 // (DONE) instead of making it cli based, remove any arguments required in cli
-// write into a .txt file instead of making another image
-// remove grayscale file creating
-// make it interactable, let the user choose the chunk size, maybe even add a confirmation
-// ask whether they want their result printed in the cli and saved or just saved.
-
+// (DONE) write into a .txt file instead of making another image
+// (DONE) remove grayscale file creating
+// (DONE) make it interactable, let the user choose the chunk size, maybe even add a confirmation
+// (MAYBE SHOULD NOT BE DONE) ask whether they want their result printed in the cli and saved or just saved.
+// minor bugfix left to do at line 106 or something....
 public class ASCIIProject{
     private static String filename;
-    // private static String directory;
 
     public static void main(String[] args) throws IOException{
         // FileWriter filewriter = new FileWriter("ogras.txt");
@@ -46,11 +45,16 @@ public class ASCIIProject{
                         +"|show thee that which thou must needs know ere thou  |\n"
                         +"|dost proceed...                                     |\n"
                         +"+----------------------------------------------------+\n\n");
-        System.out.print("1. This program is still in the works, so I recommend you \n"
+        System.out.print("----------------------------------------------------------\n"
+                        +"1. This program is still in the works, so I recommend you \n"
                         +"to use photos that you are not afraid to lose, or ones \n"
                         +"you have a copy of.\n\n"
                         +"2. NEVER USE THE ORIGINAL PHOTO, SINCE IRREVERSIBLE \n"
-                        +"CHANGES WILL BE MADE TO THEM\n\n\n");
+                        +"CHANGES WILL BE MADE TO THEM\n\n"
+                        +"3. Chunk size refers to the amount of pixel compressing, \n"
+                        +"for example 3 means that 3x3 pixels are read as one. \n"
+                        +"So the bigger the number, the smaller the \'photo\'.\n"
+                        +"----------------------------------------------------------\n\n");
         System.out.print("Are you ready to proceed? [y/n]: ");
 
         String confirmation = input.nextLine();
@@ -96,14 +100,14 @@ public class ASCIIProject{
         }
 
         image.setRGB(0, 0, width, height, pixels, 0, width);
-
+        Scanner in = new Scanner(System.in);
         System.out.print("Where do you want your file to be stored? (current dir if blank): ");
-        String directory = input.nextLine();
-        // if (directory.equals("")) {
-            // System.out.println("Your file will be saved in: " + System.getProperty("user.dir"));
-        // }
+        String directory = in.nextLine();
+        if (directory.equals(".")) {
+            System.out.println("Your file will be saved in: " + System.getProperty("user.dir"));
+        }
         System.out.print("\nName your file (omit extensions): ");
-        String filename = input.nextLine();
+        String filename = in.nextLine();
 
         if (filename.equals("")) {
             System.out.println("Invalid filename. Exiting.");
