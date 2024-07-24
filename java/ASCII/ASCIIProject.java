@@ -43,6 +43,8 @@ public class ASCIIProject{
                         +"3. Chunk size refers to the amount of pixel compressing, \n"
                         +"for example 3 means that 3x3 pixels are read as one. \n"
                         +"So the bigger the number, the smaller the \'photo\'.\n"
+                        +"4. When you open the created .txt file, make sure to \n"
+                        +"reduce font size (ctrl - or cmd -)\n"
                         +"----------------------------------------------------------\n\n");
         System.out.print("Are you ready to proceed? [y/n]: ");
 
