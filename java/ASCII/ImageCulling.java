@@ -51,7 +51,7 @@ public class ImageCulling {
     public void printNewArray(String filename) throws IOException{
         PrintWriter writer = new PrintWriter(filename+".txt", "UTF-8");
         BufferedWriter bufferedWriter = new BufferedWriter(writer);
-        System.out.print("This is the compressed version of the array \n");
+        System.out.print("This is the compressed version of the art \n");
         for (int i = 0; i < HEIGHT / CHUNK_SIZE; i++) {
             for (int j = 0; j < WIDTH / CHUNK_SIZE; j++) {
                 System.out.print(denser(new_array[i][j]/CHUNK)); // /CHUNK)); why do we have divided by CHUNK
