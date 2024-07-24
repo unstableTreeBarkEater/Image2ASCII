@@ -13,37 +13,42 @@ public class ASCIIProject{
     public static void main(String[] args) throws IOException{
         Scanner input = new Scanner(System.in);
         int size;
-        System.out.print("⠄⢀⣀⣤⣴⣶⣶⣤⣄⡀⠄⠄⣀⣤⣤⣤⣤⡀⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄\n"
-                +"⣴⣏⣹⣿⠿⠿⠿⠿⢿⣿⣄⢿⣿⣿⣿⣿⣿⣋⣷⡄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄\n"
-                +"⣿⢟⣩⣶⣾⣿⣿⣿⣶⣮⣭⡂⢛⣭⣭⣭⣭⣭⣍⣛⣂⡀⠄⠄⠄⠄⠄⠄⠄⠄\n"
-                +"⣿⣿⣿⣿⡿⢟⣫⣭⣷⣶⣾⣭⣼⡻⢛⣛⣭⣭⣶⣶⣬⣭⣅⡀⠄⠄⠄⠄⠄⠄\n"
-                +"⣿⡿⢏⣵⣾⣿⣿⣿⡿⢉⡉⠙⢿⣇⢻⣿⣿⣿⣿⡟⠉⠉⢻⡷⠄⠄⠄⠄⠄⠄\n"
-                +"⣿⣷⣾⣍⣛⢿⣿⣿⣿⣤⣁⣤⣿⢏⠸⣿⣿⣿⣿⣷⣬⣥⣾⠁⣿⣿⣷⠄⠄⠄\n"
-                +"⣿⣿⣿⣿⣭⣕⣒⠿⠭⠭⠭⡷⢖⣫⣶⣶⣬⣭⣭⣭⣭⣥⡶⢣⣿⣿⣿⠄⠄⠄\n"
-                +"⣿⣿⣿⣿⣿⣿⣿⡿⣟⣛⣭⣾⣿⣿⣿⣝⡛⣿⢟⣛⣛⣁⣀⣸⣿⣿⣿⣀⣀⣀\n"
-                +"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
-                +"⣿⡿⢛⣛⣛⣛⣙⣛⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣬⣭⣭⠽⣛⢻⣿⣿⣿⠛⠛⠛\n"
-                +"⣿⢰⣿⣿⣿⣿⣟⣛⣛⣶⠶⠶⠶⣦⣭⣭⣭⣭⣶⡶⠶⣾⠟⢸⣿⣿⣿⠄⠄⠄\n"
-                +"⡻⢮⣭⣭⣭⣭⣉⣛⣛⡻⠿⠿⠷⠶⠶⠶⠶⣶⣶⣾⣿⠟⢣⣬⣛⡻⢱⣇⠄⠄\n"
-                +"⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⠶⠒⠄⠄⠄⢸⣿⢟⣫⡥⡆⠄⠄\n"
-                +"⢭⣭⣝⣛⣛⣛⣛⣛⣛⣛⣿⣿⡿⢛⣋⡉⠁⠄⠄⠄⠄⠄⢸⣿⢸⣿⣧⡅⠄⠄\n"
-                +"⣶⣶⣶⣭⣭⣭⣭⣭⣭⣵⣶⣶⣶⣿⣿⣿⣦⡀⠄⠄⠄⠄⠈⠡⣿⣿⡯⠁⠄⠄\n\n");
-        System.out.print("+----------------------------------------------------+\n"
-                        +"|Hail and blessings upon thy soul, for gracing my    |\n"
-                        +"|program with thy presence! Come hither, and I shall |\n"
-                        +"|show thee that which thou must needs know ere thou  |\n"
-                        +"|dost proceed...                                     |\n"
-                        +"+----------------------------------------------------+\n\n");
+        System.out.print("⠄⢀⣀⣤⣴⣶⣶⣤⣄⡀⠄⠄⣀⣤⣤⣤⣤⡀⠄⠄⠄⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀                        \n"
+                +"⣴⣏⣹⣿⠿⠿⠿⠿⢿⣿⣄⢿⣿⣿⣿⣿⣿⣋⣷⡄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄   ⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⢠⣠⣾⣷⣿⣿⣿⣷⣄⠄⠀         \n"
+                +"⣿⢟⣩⣶⣾⣿⣿⣿⣶⣮⣭⡂⢛⣭⣭⣭⣭⣭⣍⣛⣂⡀⠄⠄⠄⠄⠄⠄⠄⠄           ⣀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⢅⠀        \n"
+                +"⣿⣿⣿⣿⡿⢟⣫⣭⣷⣶⣾⣭⣼⡻⢛⣛⣭⣭⣶⣶⣬⣭⣅⡀⠄⠄⠄⠄⠄⠄   ⠀⠀⠀⠀⠀⠀ ⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⡀⠀      \n"
+                +"⣿⡿⢏⣵⣾⣿⣿⣿⡿⢉⡉⠙⢿⣇⢻⣿⣿⣿⣿⡟⠉⠉⢻⡷⠄⠄⠄⠄⠄⠄    ⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡗       \n"
+                +"⣿⣷⣾⣍⣛⢿⣿⣿⣿⣤⣁⣤⣿⢏⠸⣿⣿⣿⣿⣷⣬⣥⣾⠁⣿⣿⣷⠄⠄⠄⠀⠀⠀⠀⠀   ⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⠀⠀⠀   \n"
+                +"⣿⣿⣿⣿⣭⣕⣒⠿⠭⠭⠭⡷⢖⣫⣶⣶⣬⣭⣭⣭⣭⣥⡶⢣⣿⣿⣿⠄⠄⠄   ⠀⠀⠀⠀⠀⠘⢿⣿⠁⣩⣿⣿⣿⠿⣿⡿⢿⣿⣿⣿⠛⣿⡟⠀⠀⠀⠀⠀  \n"
+                +"⣿⣿⣿⣿⣿⣿⣿⡿⣟⣛⣭⣾⣿⣿⣿⣝⡛⣿⢟⣛⣛⣁⣀⣸⣿⣿⣿⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀   ⢷⣾⣿⣋⡡⠤⣀⣷⣄⠠⠤⣉⣿⣷⣽⠀⠀⠀⠀⠀⠀  \n"
+                +"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀   ⠈⣿⣿⣿⣿⣿⣿⣿⣿⡻⣾⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀  \n"
+                +"⣿⡿⢛⣛⣛⣛⣙⣛⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣬⣭⣭⠽⣛⢻⣿⣿⣿⠛⠛⠛  ⠀⠀⠀⠀⠀⠀⠀⠀ ⠙⣿⣟⢋⣰⣯⠉⠉⣿⢄⠉⢻⡟⠀⠀⠀⠀⠀⠀⠀  \n"
+                +"⣿⢰⣿⣿⣿⣿⣟⣛⣛⣶⠶⠶⠶⣦⣭⣭⣭⣭⣶⡶⠶⣾⠟⢸⣿⣿⣿⠄⠄⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠹⣿⢿⣷⣶⠤⠔⣶⣶⠿⢾⣧⠀⠀⠀⠀⠀⠀⠀  \n"
+                +"⡻⢮⣭⣭⣭⣭⣉⣛⣛⡻⠿⠿⠷⠶⠶⠶⠶⣶⣶⣾⣿⠟⢣⣬⣛⡻⢱⣇⠄⠄⠀⠀⠀   ⢀⡀⠠⠀⠂⠀⠀⣧⡚⢿⣿⡶⢶⡿⠟⣠⣿⣿⠀⠀⠀⠀⠄⣀⡀  \n"
+                +"⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⠶⠒⠄⠄⠄⢸⣿⢟⣫⡥⡆⠄⠄   ⠒⠒⠋⠁⠀⠀⠀⠀⠀⠀⢿⣷⣄⡀⠀⠀⠀⣈⣴⣿⣿⠀⠀⠀⠀⠀⠀⠀⠉⠒\n"
+                +"⢭⣭⣝⣛⣛⣛⣛⣛⣛⣛⣿⣿⡿⢛⣋⡉⠁⠄⠄⠄⠄⠄⢸⣿⢸⣿⣧⡅⠄⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⢸⣿⣿⡿⠒⠐⠺⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
+                +"⣶⣶⣶⣭⣭⣭⣭⣭⣭⣵⣶⣶⣶⣿⣿⣿⣦⡀⠄⠄⠄⠄⠈⠡⣿⣿⡯⠁⠄⠄             ⢸⢿⣋⣀⡄⠠⣢⣀⣩⣛⠇       \n\n");
+        System.out.print("+--------------------------------------------------------+\n"
+                        +"|Hail and blessings upon thy soul, for gracing my program|\n"
+                        +"|with thy presence! Come hither, and I shall show thee   |\n"
+                        +"|that which thou must needs know ere thou dost proceed...|\n"
+                        +"+--------------------------------------------------------+\n\n");
         System.out.print("----------------------------------------------------------\n"
                         +"1. This program is still in the works, so I recommend you \n"
                         +"to use photos that you are not afraid to lose, or ones \n"
                         +"you have a copy of.\n\n"
                         +"2. NEVER USE THE ORIGINAL PHOTO, SINCE IRREVERSIBLE \n"
-                        +"CHANGES WILL BE MADE TO THEM\n\n"
-                        +"3. Chunk size refers to the amount of pixel compressing, \n"
+                        +"CHANGES COULD BE MADE TO THEM\n\n"
+                        +"3. Chunk size refers to the amount of pixels compressing, \n"
                         +"for example 3 means that 3x3 pixels are read as one. \n"
                         +"So the bigger the number, the smaller the \'photo\'.\n"
-                        +"4. When you open the created .txt file, make sure to \n"
+                        +"Typing 1 as the chunk size is not recommended, since it's \n"
+                        +"going to print the original picture, which will result in \n"
+                        +"lag and a big text file.\n\n"
+                        +"4. Currently, the saved .txt file will be saved in the dir \n"
+                        +"this program was opened. Custom directory selection not \n"
+                        +"available yet (maybe some other time)\n\n"
+                        +"5. When you open the created .txt file, make sure to \n"
                         +"reduce font size (ctrl - or cmd -)\n"
                         +"----------------------------------------------------------\n\n");
         System.out.print("Are you ready to proceed? [y/n]: ");
@@ -95,21 +100,36 @@ public class ASCIIProject{
 
         image.setRGB(0, 0, width, height, pixels, 0, width);
         Scanner in = new Scanner(System.in);
-        System.out.print("Where do you want your file to be stored? (current dir if blank): ");
-        String directory = in.nextLine();
-        if (directory.equals(".")) {
-            System.out.println("Your file will be saved in: " + System.getProperty("user.dir"));
-        }
-        System.out.print("\nName your file (omit extensions): ");
-        String filename = in.nextLine();
+        // System.out.print("Where do you want your file to be stored? (current dir if blank): ");
+        // String directory = in.nextLine().trim();
 
-        if (filename.equals("")) {
+
+        // if (directory.isEmpty()) {
+        // //     directory = System.getProperty("user.dir");
+        //     System.out.println("Your file will be saved in: " + directory);
+        // } else {
+        //     File dir = new File(directory);
+            // if (!dir.exists() || !dir.isDirectory()) {
+            //     System.out.println("Invalid directory. Exiting.");
+                // return;
+            // }
+        // }
+
+        System.out.print("\nName your file (omit extensions): ");
+        filename = in.nextLine();
+
+        if (filename.isEmpty()) {
             System.out.println("Invalid filename. Exiting.");
             return;
         }
 
-        file = new File(directory, filename); //specify directory and the filename
-        System.out.println("File saved successfully at " + file.getAbsolutePath());
+        File outputFile = new File( filename + ".txt");
+        if (outputFile.exists()) {
+            System.out.println("File already exists. Exiting.");
+            return;
+        }
+
+        // System.out.println("File saved successfully at " + file.getAbsolutePath());
 
         imageCulling.processImage(pixels); //does actually process and place new average density into array
         imageCulling.printNewArray(filename);      //does actualy print new array
