@@ -1,3 +1,4 @@
+//salam
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -6,15 +7,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.Scanner;
 
-//TODO
-// (DONE) ASK THE USER TO SPECIFY THEIR DIRECTORY IN WHICH THE FILE WILL BE SAVED, THE PRIORITY
-// (DONE) maybe put a decorative introduction to make the program look a bit welcoming
-// (DONE) instead of making it cli based, remove any arguments required in cli
-// (DONE) write into a .txt file instead of making another image
-// (DONE) remove grayscale file creating
-// (DONE) make it interactable, let the user choose the chunk size, maybe even add a confirmation
-// (MAYBE SHOULD NOT BE DONE) ask whether they want their result printed in the cli and saved or just saved.
-// minor bugfix left to do at line 106 or something....
 public class ASCIIProject{
     private static String filename;
 
@@ -72,10 +64,13 @@ public class ASCIIProject{
 
         System.out.print("PATH to your image: ");
         filename = input.nextLine();
+
         File file = new File(filename);
         BufferedImage image = ImageIO.read(file);
+
         System.out.print("Select chunk size (bigger chunk means smaller, blurrier picture) (ex. 3 or 4):  ");
-        int size = input.nextInt();
+        size = input.nextInt();
+
         int width = image.getWidth();
         int height = image.getHeight();
         ImageCulling imageCulling = new ImageCulling(width, height, size ); // Adjust width, height, and chunk size
