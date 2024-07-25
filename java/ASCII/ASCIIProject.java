@@ -51,6 +51,8 @@ public class ASCIIProject{
                         +"available yet (maybe some other time)                     \n\n"
                         +"5. When you open the created .txt file, make sure to        \n"
                         +"reduce font size (ctrl - or cmd -)                          \n"
+                        +"6. It is highly recommended to use a square font, since it  \n"
+                        +"will make the image look better. "
                         +"------------------------------------------------------------\n\n");
         System.out.print("Are you ready to proceed? [y/n]: ");
 
