@@ -120,8 +120,8 @@ public class ASCIIProject{
 
         // System.out.println("File saved successfully at " + file.getAbsolutePath());
 
-        imageCulling.processImage(pixels); //does actually process and place new average density into array
-        imageCulling.printNewArray(filename);      //does actualy print new array
+        imageCulling.processImage(pixels);
+        imageCulling.printNewArray(filename);
         // imageCulling.printArray(pixels);
     }
 
