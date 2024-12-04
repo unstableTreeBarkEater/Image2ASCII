@@ -54,8 +54,8 @@ public class ImageCulling {
         System.out.print("This is the compressed version of the art \n");
         for (int i = 0; i < HEIGHT / CHUNK_SIZE; i++) {
             for (int j = 0; j < WIDTH / CHUNK_SIZE; j++) {
-                System.out.print(denser(new_array[i][j]/CHUNK)); // /CHUNK)); why do we have divided by CHUNK
-                writer.print(denser(new_array[i][j]/CHUNK)); //CHUNK is important
+                System.out.print(denser(new_array[i][j]/CHUNK));
+                writer.print(denser(new_array[i][j]/CHUNK));
             }
             System.out.print("\n");
             writer.print("\n");
