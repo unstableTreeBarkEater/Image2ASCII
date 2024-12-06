@@ -4,6 +4,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * The ImageCulling class processes an image array by compressing it into chunks
+ * and converting it into ASCII art based on pixel intensity.
+ */
 public class ImageCulling {
     private int WIDTH;
     private int HEIGHT;
@@ -12,6 +16,13 @@ public class ImageCulling {
     private int[][] new_array;
     private static String density = "Ñ@#W$9876543210?!abc;:+=-,._ "; // 28 characters
 
+    /**
+     * Constructs an ImageCulling object with the specified dimensions and chunk size.
+     *
+     * @param width     The width of the image.
+     * @param height    The height of the image.
+     * @param chunkSize The size of the chunk to divide the image into.
+     */
     public ImageCulling(int width, int height, int chunkSize) {
         this.WIDTH = width;
         this.HEIGHT = height;
@@ -20,6 +31,12 @@ public class ImageCulling {
         this.new_array = new int[HEIGHT / CHUNK_SIZE + 1][WIDTH / CHUNK_SIZE + 1];
     }
 
+    /**
+     * Processes the pixel array and maps it to a smaller array by summing up pixel values
+     * within each chunk.
+     *
+     * @param arr The original pixel array.
+     */
     public void processImage(int[] arr) {
         int new_x = 0;
         int new_y = 0;
@@ -38,6 +55,12 @@ public class ImageCulling {
         }
     }
 
+    /**
+     * Prints the original array with density values to the terminal.
+     * Used for debugging purposes.
+     *
+     * @param arr The original pixel array.
+     */
     public void printArray(int[] arr) {
         int count = 0;
         System.out.print("This is the original array \n");
@@ -48,6 +71,13 @@ public class ImageCulling {
         System.out.print("\n\n\n");
     }
 
+    /**
+     * Prints the compressed ASCII art representation of the image to a file
+     * and the console.
+     *
+     * @param filename The name of the output file (without extension).
+     * @throws IOException If an I/O error occurs while writing to the file.
+     */
     public void printNewArray(String filename) throws IOException{
         PrintWriter writer = new PrintWriter(filename+".txt", "UTF-8");
         BufferedWriter bufferedWriter = new BufferedWriter(writer);
@@ -63,6 +93,12 @@ public class ImageCulling {
         writer.close();
     }
 
+    /**
+     * Maps an average pixel brightness to a character from the density string.
+     *
+     * @param avg The average pixel intensity for a chunk.
+     * @return A character representing the intensity.
+     */
     public static char denser(int avg){
         int count = density.length() - 1;
         for(int bit = 0; bit < 255; bit++){

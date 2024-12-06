@@ -13,9 +13,28 @@ import org.jline.reader.impl.completer.*;
 import org.jline.terminal.*;
 import org.jline.terminal.impl.*;
 
+/**
+ * ASCIIProject is a program that converts an image to an ASCII representation
+ * and saves the result as a text file. Users can specify a chunk size, which determines
+ * the level of compression applied to the image.
+ *
+ * <p>Features:
+ * - Tab-completion for file path selection.
+ * - Customizable chunk size for ASCII conversion.
+ * - Simple aspect ratio calculation.
+ *
+ * Note: Saved files are stored in the same directory as the program execution.
+ */
 public class ASCIIProject{
     private static String filename;
 
+    /**
+     * The main method initializes the terminal, gets user input for image path and chunk size,
+     * processes the image into an ASCII representation, and saves the output to a file.
+     *
+     * @param args Command-line arguments (not used).
+     * @throws IOException If there are issues with file reading or writing.
+     */
     public static void main(String[] args) throws IOException{
 
         Terminal terminal = TerminalBuilder.terminal();
@@ -24,10 +43,10 @@ public class ASCIIProject{
             .completer(new FileNameCompleter()) // Add file path completer
             .build();
 
-
         Scanner input = new Scanner(System.in);
-        // int size;
-        System.out.print("⠄⢀⣀⣤⣴⣶⣶⣤⣄⡀⠄⠄⣀⣤⣤⣤⣤⡀⠄⠄⠄⠄⠀⠀⠀⠀⠀⠀                        \n"//{{{
+
+        // Introduction{{{
+        System.out.print("⠄⢀⣀⣤⣴⣶⣶⣤⣄⡀⠄⠄⣀⣤⣤⣤⣤⡀⠄⠄⠄⠄⠀⠀⠀⠀⠀⠀                        \n"
                 +"⣴⣏⣹⣿⠿⠿⠿⠿⢿⣿⣄⢿⣿⣿⣿⣿⣿⣋⣷⡄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⢠⣠⣾⣷⣿⣿⣿⣷⣄⠄⠀         \n"
                 +"⣿⢟⣩⣶⣾⣿⣿⣿⣶⣮⣭⡂⢛⣭⣭⣭⣭⣭⣍⣛⣂⡀⠄⠄⠄⠄⠄⠄⠄⠄        ⣀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⢅⠀        \n"
                 +"⣿⣿⣿⣿⡿⢟⣫⣭⣷⣶⣾⣭⣼⡻⢛⣛⣭⣭⣶⣶⣬⣭⣅⡀⠄⠄⠄⠄⠄⠄⠀⠀⠀⠀⠀⠀ ⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⡀⠀      \n"
@@ -63,23 +82,14 @@ public class ASCIIProject{
                         +"will make the image look better. "
                         +"------------------------------------------------------------\n\n");//}}}
 
-        // System.out.println("\nAre you ready to proceed? [Y/N]");
-        // String confirmation = getUserConfirmation(input);
-
         System.out.println("PATH to your image (press TAB for suggestions): ");
         filename = reader.readLine("> ").trim(); // tab completion
-
-
-
-        // System.out.print("\nSelect chunk size (e.g., 3 or 4): ");{{{
-        // int chunkSize = getValidatedChunkSize(input);}}}
 
         System.out.print("Select chunk size (bigger chunk means smaller, blurrier picture) (ex. 3 or 4):  ");
         int size = Integer.parseInt(reader.readLine("> "));
 
         File file = new File(filename);
         BufferedImage image = ImageIO.read(file);
-
 
         int width = image.getWidth();
         int height = image.getHeight();
@@ -125,6 +135,13 @@ public class ASCIIProject{
         imageCulling.printNewArray(filename);
     }
 
+    /**
+     * Calculates the aspect ratio of the image.
+     *
+     * @param width  The width of the image.
+     * @param height The height of the image.
+     * @return A string representing the aspect ratio in the format "width:height".
+     */
     public static String getAspectRatio(int width, int height) {
         int gcd = gcd(width, height);
         int aspectWidth = width / gcd;
@@ -132,6 +149,13 @@ public class ASCIIProject{
         return aspectWidth + ":" + aspectHeight;
     }
 
+    /**
+     * Calculates the greatest common divisor (GCD) of two integers.
+     *
+     * @param a The first integer.
+     * @param b The second integer.
+     * @return The GCD of the two integers.
+     */
     public static int gcd(int a, int b) {
         while (b > 0) {
             int temp = b;
@@ -140,34 +164,4 @@ public class ASCIIProject{
         }
         return a;
     }
-
-    private static String getUserConfirmation(Scanner input) {//{{{
-        String confirmation;
-        while (true) {
-            System.out.print("> ");
-            confirmation = input.nextLine().trim();
-            if (confirmation.equalsIgnoreCase("Y") || confirmation.equalsIgnoreCase("N")) {
-                break;
-            }
-            System.out.println("Invalid input. Please type 'Y' or 'N'.");
-        }
-        return confirmation;
-    }//}}}
-
-    private static int getValidatedChunkSize(Scanner input) {//{{{
-        int chunkSize;
-        while (true) {
-            System.out.print("> ");
-            try {
-                chunkSize = Integer.parseInt(input.nextLine().trim());
-                if (chunkSize > 0) {
-                    break;
-                }
-                System.out.println("Chunk size must be a positive number.");
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid number.");
-            }
-        }
-        return chunkSize;
-    }//}}}
 }
