@@ -64,7 +64,7 @@ public class ImageCulling {
     }
 
     public static char denser(int avg){
-        int count = 28;
+        int count = density.length() - 1;
         for(int bit = 0; bit < 255; bit++){
             if(bit != 0 && bit % 9 == 0) density.charAt(count--);
             if(bit == avg) return density.charAt(count);
